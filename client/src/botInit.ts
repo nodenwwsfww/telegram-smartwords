@@ -8,7 +8,12 @@ export interface MyContext extends Context {
   myProp?: string
   myOtherProp?: number
 }
-const TELEGRAM_SECRET_KEY = process.env.TELEGRAM_SECRET_KEY;
+const TELEGRAM_SECRET_KEY : string | undefined = process.env.TELEGRAM_SECRET_KEY;
+
+
+if (TELEGRAM_SECRET_KEY === undefined) {
+  throw new Error('TELEGRAM_SECRET_KEY must be provided!');
+}
 
 // Create your bot and tell it about your context type
-export const bot = new Telegraf<MyContext>(TELEGRAM_SECRET_KEY || '2232323')
+export const bot = new Telegraf<MyContext>(TELEGRAM_SECRET_KEY);
