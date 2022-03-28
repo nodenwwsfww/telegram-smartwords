@@ -5,7 +5,7 @@ interface MyContext extends Context {
   myOtherProp?: number
 }
 
-const TELEGRAM_SECRET_KEY = process.env.telegramSecretKey;
+const TELEGRAM_SECRET_KEY = process.env.TELEGRAM_SECRET_KEY;
 console.log(TELEGRAM_SECRET_KEY)
 // Create your bot and tell it about your context type
 const bot = new Telegraf<MyContext>(TELEGRAM_SECRET_KEY || '2232323')
